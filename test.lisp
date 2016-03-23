@@ -3,7 +3,6 @@
 (defpackage #:cl-hash-table-utils-test
   (:use #:cl
         #:prove
-        #:alexandria
         #:cl-hash-table-utils))
 
 (in-package #:cl-hash-table-utils-test)
@@ -40,7 +39,7 @@
 
   (is-values
    (ht
-     (let ((*keyfn* #'make-keyword))
+     (let ((*keyfn* (lambda (sym) (intern (string sym) :keyword))))
        (with-hash-table-items (x y z) ht
          (setf x 1
                y 2
@@ -52,7 +51,8 @@
 
   (is-values
    (ht
-     (let ((*keyfn* (compose #'string-downcase #'string)))
+     (let ((*keyfn* (lambda (sym)
+                      (string-downcase (string sym)))))
        (with-hash-table-items ((foo "Foo") (bar "Bar") baz) ht
          (setf foo 1
                bar 2

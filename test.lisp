@@ -13,7 +13,7 @@
 
 (plan 2)
 
-(subtest "with-hash-table-items"
+(subtest "with-hash-table-items[-fn]"
 
   (is-values
    (ht
@@ -49,6 +49,13 @@
              (gethash :z ht)))
    '(1 2 3))
 
+  (is
+   (ht
+     (with-hash-table-items-fn (a) (ht #'string)
+       (setf a 1))
+     (gethash (string 'a) ht))
+   1)
+
   (is-values
    (ht
      (let ((*keyfn* (lambda (sym)
@@ -75,7 +82,7 @@
        (values a b c)))
    'type-error
    "item-entry check type failed when macroexpand")
-  
+
   (is-error
    (ht
      (let ((*keyfn* "foo"))
@@ -85,7 +92,7 @@
    "*keyfn* check type failed"))
 
 
-(subtest "with-hash-table-values"
+(subtest "with-hash-table-values[-fn]"
 
   (is-values
    (ht

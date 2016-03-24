@@ -1,11 +1,11 @@
 (in-package #:cl-user)
 
-(defpackage #:cl-hash-table-utils-test
+(defpackage #:cl-hash-table-da-test
   (:use #:cl
         #:prove
-        #:cl-hash-table-utils))
+        #:cl-hash-table-da))
 
-(in-package #:cl-hash-table-utils-test)
+(in-package #:cl-hash-table-da-test)
 
 (defmacro ht (&body body)
   `(let ((ht (make-hash-table :test #'equal)))

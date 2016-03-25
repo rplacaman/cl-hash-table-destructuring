@@ -1,5 +1,5 @@
 # CL-HASH-TABLE-DA
-Common Lisp hash table destructruing assignment macroses
+Hash table **d**estructruing **a**ssignment macroses for Common Lisp
 ```lisp
 (let ((ht (make-hash-table)))
   (with-hash-table-items (foo (bar 'baz)) ht

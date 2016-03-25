@@ -32,9 +32,8 @@
 
 (defparameter *keyfn* #'identity)
 
-(defmacro with-hash-table-values-fn ((entry &rest more-entries) (hash-table-form keyfn) &body body)
-  (let* ((entries (cons entry more-entries))
-         (hash-table-name (gensym (string :hash-table)))
+(defmacro with-hash-table-values-fn ((&rest entries) (hash-table-form keyfn) &body body)
+  (let* ((hash-table-name (gensym (string :hash-table)))
          (keyfn-name (gensym (string :keyfn)))
          (init-forms (make-expansions (make-key-forms entries keyfn-name) hash-table-name))
          (names (make-names entries)))
@@ -46,14 +45,13 @@
          (let ,(mapcar #'list names init-forms)
            ,@body)))))
 
-(defmacro with-hash-table-values ((entry &rest more-entries) hash-table-form &body body)
-  `(with-hash-table-values-fn ,(cons entry more-entries) (,hash-table-form *keyfn*)
+(defmacro with-hash-table-values ((&rest entries) hash-table-form &body body)
+  `(with-hash-table-values-fn ,entries (,hash-table-form *keyfn*)
      ,@body))
 
 
-(defmacro with-hash-table-items-fn ((entry &rest more-entries) (hash-table-form keyfn) &body body)
-  (let* ((entries (cons entry more-entries))
-         (hash-table-name (gensym (string :hash-table)))
+(defmacro with-hash-table-items-fn ((&rest entries) (hash-table-form keyfn) &body body)
+  (let* ((hash-table-name (gensym (string :hash-table)))
          (keyfn-name (gensym (string :keyfn)))
          (init-forms (make-key-forms entries keyfn-name))
          (names (make-names entries))
@@ -68,6 +66,6 @@
            (symbol-macrolet ,(mapcar #'list names (make-expansions gsyms hash-table-name))
              ,@body))))))
 
-(defmacro with-hash-table-items ((entry &rest more-entries) hash-table-form &body body)
-  `(with-hash-table-items-fn ,(cons entry more-entries) (,hash-table-form *keyfn*)
+(defmacro with-hash-table-items ((&rest entries) hash-table-form &body body)
+  `(with-hash-table-items-fn ,entries (,hash-table-form *keyfn*)
      ,@body))

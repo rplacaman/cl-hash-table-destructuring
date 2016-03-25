@@ -74,7 +74,14 @@
      (with-hash-table-items ((foo nil)) ht
        (setf foo nil))
      (gethash nil ht))
-   '(NIL T))
+   '(nil t))
+
+  (is
+   (ht
+     (with-hash-table-items () ht
+       1))
+   1
+   "Empty entry list")
 
   (is-error
    (macroexpand
@@ -108,6 +115,13 @@
        (values a
                b
                c)))
-   '(1 2 3)))
+   '(1 2 3))
+
+  (is
+   (ht
+     (with-hash-table-values () ht
+       1))
+   1
+   "Empty entry list"))
 
 (finalize)

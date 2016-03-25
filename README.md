@@ -1,5 +1,5 @@
 # CL-HASH-TABLE-DESTRUCTURING
-Hash table destructuring utils for Common Lisp. Design similar to the `with-slots` macro.
+Hash table destructuring utils. Design similar to the `with-slots` macro.
 ```lisp
 (let ((ht (make-hash-table)))
   (with-hash-table-items (x (y :y) z) ht

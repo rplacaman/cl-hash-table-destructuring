@@ -1,5 +1,5 @@
 # CL-HASH-TABLE-DA
-Hash table **d**estructruing **a**ssignment macroses for Common Lisp
+Hash table *d*estructruing *a*ssignment macroses for Common Lisp. Design similar to the `with-slots` macro.
 ```lisp
 (let ((ht (make-hash-table)))
   (with-hash-table-items (foo (bar 'baz)) ht

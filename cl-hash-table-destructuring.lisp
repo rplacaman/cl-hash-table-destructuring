@@ -1,4 +1,4 @@
-(in-package #:cl-hash-table-da)
+(in-package #:cl-hash-table-destructuring)
 
 (deftype non-keyword-symbol ()
   '(and symbol (not keyword)))
@@ -16,7 +16,7 @@
 
 (defhelper make-names (entries)
   (mapcar (lambda (entry)
-            (if (consp entry) (car entry) entry))
+            (if (consp entry) (first entry) entry))
           entries))
 
 (defhelper make-key-forms (entries keyfn-name)

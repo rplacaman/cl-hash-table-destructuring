@@ -1,25 +1,25 @@
 (in-package #:cl-user)
 
-(defpackage #:cl-hash-table-da-asd
+(defpackage #:cl-hash-table-destructuring-asd
   (:use #:cl #:asdf))
 
-(in-package #:cl-hash-table-da-asd)
+(in-package #:cl-hash-table-destructuring-asd)
 
-(defsystem #:cl-hash-table-da
-  :description "Hash table destructuring assignment macroses"
+(defsystem #:cl-hash-table-destructuring
+  :description "Hash table destructuring utils"
   :version "0.0.1"
   :author "Andrey V. Tikhonov <andrey.tikhonov.mailbox@gmail.com>"
   :licence "WTFPL"
   :serial t
   :components ((:file "package")
-               (:file "cl-hash-table-da"))
-  :in-order-to ((test-op (test-op #:cl-hash-table-da-test))))
+               (:file "cl-hash-table-destructuring"))
+  :in-order-to ((test-op (test-op #:cl-hash-table-destructuring-test))))
 
-(defsystem #:cl-hash-table-da-test
+(defsystem #:cl-hash-table-destructuring-test
   :version "0.0.1"
   :author "Andrey V. Tikhonov <andrey.tikhonov.mailbox@gmail.com>"
   :licence "WTFPL"
-  :depends-on (#:cl-hash-table-da
+  :depends-on (#:cl-hash-table-destructuring
                #:prove)
   :defsystem-depends-on (#:prove-asdf)
   :components ((:test-file "test"))

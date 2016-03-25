@@ -41,6 +41,7 @@
     `(let ((,keyfn-name ,keyfn))
        (check-type ,keyfn-name function-designator)
        (let ((,hash-table-name (the hash-table ,hash-table-form)))
+         (declare (ignorable ,hash-table-name))
          (check-type ,hash-table-name hash-table)
          (let ,(mapcar #'list names init-forms)
            ,@body)))))

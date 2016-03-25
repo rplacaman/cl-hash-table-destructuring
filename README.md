@@ -82,6 +82,28 @@ Hash table *d*estructruing *a*ssignment macroses for Common Lisp. Design similar
 
 `entry ::= variable-name | (variable-name key-form)`
 
+#### Examples
+
+```lisp
+(let ((ht (make-hash-table)))
+  (with-hash-table-items (x y z) ht
+    (setf x 1
+          y 2
+          z 3))
+  (let (result)
+    (with-hash-table-values (x y z) ht
+      (setf result (list x y z))
+      (setf x :x
+            y :y
+            z :z))
+    (with-hash-table-values (x y z) ht
+      (values result
+              (list x y z)))))
+
+;; (1 2 3)
+;; (1 2 3)
+```
+
 # License
 ```
 Copyright © 2016 Andrey V. Tikhonov <andrey.tikhonov.mailbox@gmail.com>

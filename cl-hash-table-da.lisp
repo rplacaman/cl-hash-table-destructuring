@@ -60,8 +60,10 @@
     `(let ((,keyfn-name ,keyfn))
        (check-type ,keyfn-name function-designator)
        (let ((,hash-table-name (the hash-table ,hash-table-form)))
+         (declare (ignorable ,hash-table-name))
          (check-type ,hash-table-name hash-table)
          (let ,(mapcar #'list gsyms init-forms)
+           (declare (ignorable ,@gsyms))
            (symbol-macrolet ,(mapcar #'list names (make-expansions gsyms hash-table-name))
              ,@body))))))
 

@@ -22,6 +22,57 @@ Hash table **d**estructruing **a**ssignment macroses for Common Lisp
 
 `entry ::= variable-name | (variable-name key-form)`
 
+#### Examples
+```lisp
+(let ((ht (make-hash-table)))
+  (with-hash-table-items (x (y :y) z) ht
+    (setf x 1
+          y 2
+          z 3))
+  (values (gethash 'x ht)
+          (gethash :y ht)
+          (gethash 'z ht)))
+
+;; 1
+;; 2
+;; 3
+```
+
+```lisp
+(flet ((make-keyword (sym) (intern (string sym) :keyword)))
+  (let ((ht (make-hash-table)))
+    (let ((*keyfn* #'make-keyword))
+      (with-hash-table-items (foo bar baz) ht
+        (setf foo :foo
+              bar :bar
+              baz :baz))
+      (with-hash-table-items (foo bar baz) ht
+        (values foo
+                bar
+                baz)))))
+
+;; :FOO
+;; :BAR
+;; :BAZ
+```
+
+```lisp
+(flet ((make-keyword (sym) (intern (string sym) :keyword)))
+  (let ((ht (make-hash-table)))
+    (with-hash-table-items-fn (foo bar baz) (ht #'make-keyword)
+      (setf foo :foo
+            bar :bar
+            baz :baz))
+    (with-hash-table-items-fn (foo bar baz) (ht #'make-keyword)
+      (values foo
+              bar
+              baz))))
+
+;; :FOO
+;; :BAR
+;; :BAZ
+```
+
 ### Macro WITH-HASH-TABLE-VALUES, WITH-HASH-TABLE-VALUES-FN
 #### Syntax
 

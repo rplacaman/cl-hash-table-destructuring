@@ -2,15 +2,30 @@
 Hash table *d*estructruing *a*ssignment macroses for Common Lisp. Design similar to the `with-slots` macro.
 ```lisp
 (let ((ht (make-hash-table)))
-  (with-hash-table-items (foo (bar 'baz)) ht
-    (setf foo 1
-          bar 2))
-  (with-hash-table-items (foo bar baz) ht
-    (values foo bar baz)))
+  (with-hash-table-items (x (y :y) z) ht
+    (setf x 1
+          y 2
+          z 3))
+  (let (result)
+    (maphash (lambda (key value)
+               (push (cons key value) result))
+             ht)
+    result))
 
-;; 1
-;; NIL
-;; 2
+;; ((Z . 3) (:Y . 2) (X . 1))
+
+(let ((ht (make-hash-table :test #'equal)))
+  (with-hash-table-items-fn (x (y :y) z) (ht #'string)
+    (setf x 1
+          y 2
+          z 3))
+  (let (result)
+    (maphash (lambda (key value)
+               (push (cons key value) result))
+             ht)
+    result))
+
+;; (("Z" . 3) (:Y . 2) ("X" . 1))
 ```
 
 ### Macro WITH-HASH-TABLE-ITEMS, WITH-HASH-TABLE-ITEMS-FN

@@ -12,7 +12,26 @@ Common Lisp hash table destructruing assignment macroses
 ;; NIL
 ;; 2
 ```
-## License
+
+### Macro WITH-HASH-TABLE-ITEMS, WITH-HASH-TABLE-ITEMS-FN
+#### Syntax
+
+**`with-hash-table-items`** `(entry*) hash-table-form declaration* form*`
+
+**`with-hash-table-items-fn`** `(entry*) (hash-table-form keyfn) hash-table-form declaration* form*`
+
+`entry ::= variable-name | (variable-name key-form)`
+
+### Macro WITH-HASH-TABLE-VALUES, WITH-HASH-TABLE-VALUES-FN
+#### Syntax
+
+**`with-hash-table-values`** `(entry*) hash-table-form declaration* form*`
+
+**`with-hash-table-values-fn`** `(entry*) (hash-table-form keyfn) hash-table-form declaration* form*`
+
+`entry ::= variable-name | (variable-name key-form)`
+
+# License
 ```
 Copyright © 2016 Andrey V. Tikhonov <andrey.tikhonov.mailbox@gmail.com>
 This work is free. You can redistribute it and/or modify it under the

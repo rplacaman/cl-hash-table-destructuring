@@ -31,9 +31,9 @@ Hash table destructuring utils. Design similar to the `with-slots` macro.
 ### Macro WITH-HASH-TABLE-ITEMS, WITH-HASH-TABLE-ITEMS-FN
 #### Syntax
 
-**`with-hash-table-items`** `(entry*) hash-table-form declaration* form*`
+`with-hash-table-items (entry*) hash-table-form declaration* form*`
 
-**`with-hash-table-items-fn`** `(entry*) (hash-table-form keyfn) hash-table-form declaration* form*`
+`with-hash-table-items-fn (entry*) (hash-table-form keyfn) declaration* form*`
 
 `entry ::= variable-name | (variable-name key-form)`
 
@@ -91,9 +91,9 @@ Hash table destructuring utils. Design similar to the `with-slots` macro.
 ### Macro WITH-HASH-TABLE-VALUES, WITH-HASH-TABLE-VALUES-FN
 #### Syntax
 
-**`with-hash-table-values`** `(entry*) hash-table-form declaration* form*`
+`with-hash-table-values (entry*) hash-table-form declaration* form*`
 
-**`with-hash-table-values-fn`** `(entry*) (hash-table-form keyfn) hash-table-form declaration* form*`
+`with-hash-table-values-fn (entry*) (hash-table-form keyfn) declaration* form*`
 
 `entry ::= variable-name | (variable-name key-form)`
 

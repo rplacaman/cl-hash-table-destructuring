@@ -10,9 +10,8 @@
   :version "0.0.1"
   :author "Andrey V. Tikhonov <andrey.tikhonov.mailbox@gmail.com>"
   :licence "WTFPL"
-  :serial t
-  :components ((:file "package")
-               (:file "cl-hash-table-destructuring"))
+  :components ((:module "src"
+                :components ((:file "cl-hash-table-destructuring"))))
   :in-order-to ((test-op (test-op #:cl-hash-table-destructuring-test))))
 
 (defsystem #:cl-hash-table-destructuring-test
@@ -22,6 +21,7 @@
   :depends-on (#:cl-hash-table-destructuring
                #:prove)
   :defsystem-depends-on (#:prove-asdf)
-  :components ((:test-file "test"))
+  :components ((:module "t"
+                :components ((:test-file "cl-hash-table-destructuring"))))
   :perform (test-op :after (op c)
                     (funcall (intern #.(string :run) :prove) c)))

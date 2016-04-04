@@ -1,3 +1,13 @@
+(in-package #:cl-user)
+
+(defpackage #:cl-hash-table-destructuring
+  (:use #:cl)
+  (:export #:with-hash-table-values-fn
+           #:with-hash-table-values
+           #:with-hash-table-items-fn
+           #:with-hash-table-items
+           #:*keyfn*))
+
 (in-package #:cl-hash-table-destructuring)
 
 (deftype non-keyword-symbol ()

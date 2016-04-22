@@ -28,6 +28,17 @@ Hash table destructuring utils. Design similar to the `with-slots` macro.
 ;; (("Z" . 3) (:Y . 2) ("X" . 1))
 ```
 
+## Installation (via Quicklisp)
+```lisp
+(ql:quickload "cl-hash-table-destructuring")
+```
+
+## Run tests
+```list
+(asdf:test-system :cl-hash-table-destructuring)
+```
+
+## Documentation
 ### Macro WITH-HASH-TABLE-ITEMS, WITH-HASH-TABLE-ITEMS-FN
 #### Syntax
 
@@ -121,7 +132,7 @@ entry ::= variable-name | (variable-name key-form)
 ;; (1 2 3)
 ```
 
-# License
+## License
 ```
 Copyright © 2016 Andrey V. Tikhonov <andrey.tikhonov.mailbox@gmail.com>
 This work is free. You can redistribute it and/or modify it under the
